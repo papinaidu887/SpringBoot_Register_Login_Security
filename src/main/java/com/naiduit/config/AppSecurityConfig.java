@@ -52,7 +52,7 @@ public class AppSecurityConfig {
 	public SecurityFilterChain security(HttpSecurity http) {
 		
 		http.authorizeHttpRequests((req) -> {
-			req.requestMatchers("/register")
+			req.requestMatchers("/register", "/login")
 			   .permitAll()
 			   .anyRequest()
 			   .authenticated();						
