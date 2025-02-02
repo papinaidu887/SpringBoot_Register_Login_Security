@@ -35,6 +35,7 @@ public class CustomerRestController {
 					
 			if(status)
 			{ 
+				// Generate JWT and send to client
 				return new ResponseEntity<String>("Welcome", HttpStatus.OK);
 			}
 			else {
