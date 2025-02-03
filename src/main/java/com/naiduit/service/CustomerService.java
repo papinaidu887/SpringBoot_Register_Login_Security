@@ -16,8 +16,9 @@ import com.naiduit.repo.CustomerRepository;
 @Service
 public class CustomerService implements UserDetailsService {
 	
-	@Autowired
-	private BCryptPasswordEncoder pazzwordEncoder;
+	/*
+	 * @Autowired private BCryptPasswordEncoder pazzwordEncoder;
+	 */
 	
 	@Autowired
 	private CustomerRepository customerRepo;
@@ -27,18 +28,20 @@ public class CustomerService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		
 		Customer c = customerRepo.findByEmail(email);
+		
 		return new User(c.getEmail(), c.getPazzword(), Collections.emptyList());
 	
 	}
 	
-	public boolean saveCustomer(Customer c) {
-		
-		String encodePazzword = pazzwordEncoder.encode(c.getPazzword());
-		c.setPazzword(encodePazzword);
-		
-		Customer savedCustomer = customerRepo.save(c);
-		
-		return savedCustomer.getCid()!=null;
-	}
+	/*
+	 * public boolean saveCustomer(Customer c) {
+	 * 
+	 * String encodePazzword = pazzwordEncoder.encode(c.getPazzword());
+	 * c.setPazzword(encodePazzword);
+	 * 
+	 * Customer savedCustomer = customerRepo.save(c);
+	 * 
+	 * return savedCustomer.getCid()!=null; }
+	 */
 
 }
